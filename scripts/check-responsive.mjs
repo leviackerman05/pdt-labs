@@ -17,11 +17,15 @@ for (const width of widths) {
       (action) => getComputedStyle(action).display !== "none",
     );
     const actionRects = visibleActions.map((action) => action.getBoundingClientRect());
+    const pricingRects = [...document.querySelectorAll(".pricing-card")].map((card) => card.getBoundingClientRect());
     return {
       viewport: window.innerWidth,
       documentWidth: document.documentElement.scrollWidth,
       visibleActionLabels: visibleActions.map((action) => action.textContent?.trim()),
       actionsShareRow: actionRects.length === 2 ? Math.abs(actionRects[0].top - actionRects[1].top) < 3 : null,
+      pricingCardsShareRow: pricingRects.length === 3
+        ? Math.max(...pricingRects.map((rect) => rect.top)) - Math.min(...pricingRects.map((rect) => rect.top)) < 3
+        : false,
     };
   });
   results.push(result);
@@ -33,7 +37,10 @@ await browser.close();
 const failures = results.filter((result) => {
   const mobileActionsAreCorrect = result.visibleActionLabels.length === 2 && result.actionsShareRow;
   const desktopActionIsCorrect = result.visibleActionLabels.length === 1 && result.visibleActionLabels[0]?.startsWith("See shipped work");
-  return result.documentWidth > result.viewport || (result.viewport <= 780 ? !mobileActionsAreCorrect : !desktopActionIsCorrect);
+  const pricingLayoutIsCorrect = result.viewport <= 780 ? !result.pricingCardsShareRow : result.pricingCardsShareRow;
+  return result.documentWidth > result.viewport
+    || (result.viewport <= 780 ? !mobileActionsAreCorrect : !desktopActionIsCorrect)
+    || !pricingLayoutIsCorrect;
 });
 console.log(JSON.stringify(results, null, 2));
 

@@ -40,9 +40,7 @@ const desktopLight = await makePage({ width: 1440, height: 1000 }, "light");
 await primePage(desktopLight.page);
 await desktopLight.page.screenshot({ path: resolve(outputDir, "full-desktop-light.png"), fullPage: true });
 
-await desktopLight.page.getByRole("button", { name: /Product rescue/ }).click();
-await desktopLight.page.getByRole("button", { name: /Product rescue/ }).scrollIntoViewIfNeeded();
-await desktopLight.page.locator("#services").screenshot({ path: resolve(outputDir, "services-open.png") });
+await desktopLight.page.locator("#pricing").screenshot({ path: resolve(outputDir, "pricing-desktop.png") });
 
 await desktopLight.page.evaluate(() => document.activeElement?.blur());
 for (let index = 0; index < 60; index += 1) {
@@ -65,5 +63,10 @@ await mobile.page.getByRole("button", { name: "Open navigation" }).click();
 await mobile.page.waitForTimeout(300);
 await mobile.page.screenshot({ path: resolve(outputDir, "mobile-menu.png") });
 await mobile.context.close();
+
+const laptop = await makePage({ width: 1024, height: 900 }, "light");
+await primePage(laptop.page);
+await laptop.page.locator("#pricing").screenshot({ path: resolve(outputDir, "pricing-laptop.png") });
+await laptop.context.close();
 
 await browser.close();

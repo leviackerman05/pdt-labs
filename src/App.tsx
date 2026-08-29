@@ -38,7 +38,6 @@ function Header({ dark, onTheme }: { dark: boolean; onTheme: () => void }) {
 
       <nav className="desktop-nav" aria-label="Primary navigation">
         <a href="#work">Work</a>
-        <a href="#services">Services</a>
         <a href="#process">Process</a>
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
@@ -76,7 +75,6 @@ function Header({ dark, onTheme }: { dark: boolean; onTheme: () => void }) {
           >
             {[
               ["Work", "#work"],
-              ["Services", "#services"],
               ["Process", "#process"],
               ["Pricing", "#pricing"],
               ["FAQ", "#faq"],
@@ -246,7 +244,6 @@ function App() {
     const saved = localStorage.getItem("pdt-theme");
     return saved ? saved === "dark" : false;
   });
-  const [openService, setOpenService] = useState<number | null>(0);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const reduceMotion = useReducedMotion();
 
@@ -301,60 +298,20 @@ function App() {
         </section>
 
         <section className="proof-rail" aria-label="Studio proof points">
-          <div><span>06</span><p>years in production software</p></div>
-          <div><span>04</span><p>products built and tested with real users</p></div>
+          <div><span>06</span><p>years shipping production systems</p></div>
+          <div><span>E2E</span><p>product, architecture, infrastructure, and launch</p></div>
           <div><span>01</span><p>senior builder from scope to release</p></div>
-          <p className="proof-note">Strategy, product, engineering, infrastructure.</p>
+          <p className="proof-note">Bengaluru based, working globally.</p>
         </section>
 
         <section id="work" className="work section-pad section-rule" aria-labelledby="work-title">
           <div className="section-intro">
             <p className="eyebrow">Selected work · Real products, real constraints</p>
-            <h2 id="work-title">Products built and in use.</h2>
-            <p>Four independent products across Android, macOS, consumer web, search, and content automation.</p>
+            <h2 id="work-title">Selected products, built and in use.</h2>
+            <p>A selection of independent products across Android, macOS, consumer web, search, and content automation, backed by six years of building and operating production systems.</p>
           </div>
           <div className="project-list">
             {projects.map((project, index) => <ProjectCase key={project.name} project={project} index={index} />)}
-          </div>
-        </section>
-
-        <section id="services" className="services section-pad section-rule" aria-labelledby="services-title">
-          <div className="services-lead">
-            <p className="eyebrow">Ways to work together</p>
-            <h2 id="services-title">What I can build for you.</h2>
-            <p>Choose a focused page, a complete business site, an existing-product rescue, or a four-week MVP.</p>
-          </div>
-          <div className="service-list">
-            {services.map((service, index) => {
-              const expanded = openService === index;
-              return (
-                <article className={`service-row ${expanded ? "is-open" : ""}`} key={service.name}>
-                  <button type="button" aria-expanded={expanded} onClick={() => setOpenService(expanded ? null : index)}>
-                    <span className="service-number">0{index + 1}</span>
-                    <strong>{service.name}</strong>
-                    <span>{service.duration}</span>
-                    <span>{service.price}</span>
-                    <Plus className="service-plus" size={22} weight="bold" aria-hidden="true" />
-                  </button>
-                  <AnimatePresence initial={false}>
-                    {expanded && (
-                      <motion.div
-                        className="service-detail"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.28, ease: easing }}
-                      >
-                        <p>{service.summary}</p>
-                        <ul>
-                          {service.deliverables.map((item) => <li key={item}><Check size={16} weight="bold" /> {item}</li>)}
-                        </ul>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </article>
-              );
-            })}
           </div>
         </section>
 

@@ -595,7 +595,6 @@ footer a:hover,
 }
 
 .work,
-.services,
 .pricing,
 .faq {
   padding-top: clamp(90px, 11vw, 170px);
@@ -615,7 +614,6 @@ footer a:hover,
 }
 
 .section-intro h2,
-.services-lead h2,
 .process-heading h2,
 .pricing-top h2,
 .faq-heading h2,
@@ -628,8 +626,7 @@ footer a:hover,
   letter-spacing: -0.065em;
 }
 
-.section-intro > p:last-child,
-.services-lead > p:last-child {
+.section-intro > p:last-child {
   max-width: 430px;
   margin: 0;
   color: var(--ink-soft);
@@ -804,106 +801,6 @@ footer a:hover,
 
 .project-source-link {
   color: var(--ink-soft);
-}
-
-.services {
-  display: grid;
-  grid-template-columns: minmax(320px, 0.72fr) minmax(0, 1.28fr);
-  gap: clamp(50px, 9vw, 150px);
-  background: var(--panel);
-}
-
-.services-lead {
-  position: sticky;
-  top: 115px;
-  align-self: start;
-}
-
-.services-lead h2 {
-  margin: 18px 0 28px;
-  font-size: clamp(48px, 5.5vw, 92px);
-}
-
-.service-list {
-  border-top: 1px solid var(--ink);
-}
-
-.service-row {
-  overflow: hidden;
-  border-bottom: 1px solid var(--ink);
-}
-
-.service-row > button {
-  display: grid;
-  width: 100%;
-  grid-template-columns: 44px minmax(150px, 1fr) minmax(100px, 0.42fr) minmax(100px, 0.42fr) 28px;
-  gap: 14px;
-  align-items: center;
-  padding: 25px 4px;
-  border: 0;
-  background: transparent;
-  color: var(--ink);
-  text-align: left;
-  cursor: pointer;
-}
-
-.service-row > button strong {
-  font-family: var(--font-display);
-  font-size: clamp(25px, 2.4vw, 39px);
-  letter-spacing: -0.04em;
-}
-
-.service-row > button > span:not(.service-number) {
-  color: var(--ink-soft);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  text-transform: uppercase;
-}
-
-.service-number {
-  color: var(--accent);
-  font-family: var(--font-mono);
-  font-size: 11px;
-}
-
-.service-plus {
-  transition: transform 220ms ease;
-}
-
-.service-row.is-open .service-plus {
-  transform: rotate(45deg);
-}
-
-.service-detail {
-  display: grid;
-  grid-template-columns: 1fr 0.9fr;
-  gap: 40px;
-}
-
-.service-detail > p {
-  margin: 0;
-  padding: 8px 0 34px 58px;
-  color: var(--ink-soft);
-  font-size: 17px;
-}
-
-.service-detail ul {
-  display: grid;
-  gap: 9px;
-  margin: 0;
-  padding: 8px 0 34px;
-  list-style: none;
-}
-
-.service-detail li {
-  display: flex;
-  gap: 9px;
-  align-items: center;
-  font-size: 14px;
-}
-
-.service-detail li svg {
-  color: var(--accent);
 }
 
 .process {
@@ -1446,13 +1343,8 @@ footer > div a {
     border-top: 1px solid var(--accent-ink);
   }
 
-  .services,
   .faq {
     grid-template-columns: 1fr;
-  }
-
-  .services-lead {
-    position: static;
   }
 
   .process {
@@ -1469,16 +1361,23 @@ footer > div a {
     grid-template-columns: 1fr;
   }
 
-  .pricing-grid {
-    grid-template-columns: 1fr;
-  }
-
   .pricing-card {
-    min-height: 0;
+    min-height: 620px;
+    padding: clamp(18px, 2.4vw, 28px);
   }
 
-  .pricing-summary {
-    min-height: 0;
+  .pricing-card h3 {
+    font-size: clamp(27px, 3.6vw, 38px);
+  }
+
+  .price-values {
+    flex-direction: column;
+    gap: 2px;
+    align-items: flex-start;
+  }
+
+  .price-values strong {
+    font-size: clamp(42px, 5.2vw, 54px);
   }
 
   .rescue-offer {
@@ -1630,27 +1529,6 @@ footer > div a {
     box-shadow: 9px 9px 0 var(--panel-strong);
   }
 
-  .service-row > button {
-    grid-template-columns: 34px minmax(130px, 1fr) 24px;
-  }
-
-  .service-row > button > span:not(.service-number) {
-    display: none;
-  }
-
-  .service-detail {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-  .service-detail > p {
-    padding: 5px 0 20px 46px;
-  }
-
-  .service-detail ul {
-    padding: 0 0 28px 46px;
-  }
-
   .process-steps li {
     grid-template-columns: 40px 1fr;
   }
@@ -1665,6 +1543,21 @@ footer > div a {
 
   .pricing-card {
     min-height: 0;
+    padding: 24px;
+  }
+
+  .pricing-card h3 {
+    font-size: 30px;
+  }
+
+  .price-values {
+    flex-direction: row;
+    gap: 12px;
+    align-items: baseline;
+  }
+
+  .price-values strong {
+    font-size: 54px;
   }
 
   .pricing-summary {
