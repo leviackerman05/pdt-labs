@@ -29,13 +29,13 @@ PDT Labs is a senior product studio that turns rough ideas and fragile prototype
 
 ## Page structure
 
-1. Compact top navigation with Work, Services, Process, Pricing, FAQ, and Start a project.
+1. Compact top navigation with Work, Services, Process, Pricing, FAQ, and Book a call.
 2. Hero with oversized headline, founder-focused copy, two CTAs, and a Scope to Build to Ship routing board containing real product previews.
 3. Proof rail: 6 years in production software, 4 products built and tested with real users, one senior builder from strategy to release.
-4. Selected work: four asymmetric project cases using real screenshots, product outcome, stack/capability labels, and live/GitHub links.
+4. Selected work: four asymmetric project cases using real screenshots, product outcome, capability labels, direct live-site buttons, and GitHub links.
 5. Services: editorial accordion rows for Launch Site, Business Site, Product Rescue, and MVP Build.
 6. Process: one linear 01 to 04 sequence, no equal card grid.
-7. Pricing: transparent starting rates and durations only in days or weeks, plus a founding-client offer for the first three projects.
+7. Pricing: three vertical package cards for Idea Validation, Business site, and MVP build, plus a separate Product rescue offer and clearly labeled founding-client rates for the first three projects.
 8. FAQ and a high-contrast project inquiry section.
 9. Compact footer with real links.
 

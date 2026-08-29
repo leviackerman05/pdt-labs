@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="PDT Labs">
-  <rect width="64" height="64" rx="10" fill="#ff5a2a"/>
-  <path d="M15 15h17c11 0 18 6 18 16s-7 16-18 16h-8v8h-9V15Zm9 9v14h8c6 0 9-2 9-7s-3-7-9-7h-8Z" fill="#101210"/>
+  <rect width="64" height="64" rx="10" fill="#f4f5f3"/>
+  <path d="M12 16h26v8H12zm0 12h34v8H12zm0 12h20v8H12z" fill="#101210"/>
+  <path d="M45 13h8L39 51h-8z" fill="#ff5a2a"/>
 </svg>

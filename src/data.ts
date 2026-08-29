@@ -13,6 +13,7 @@ export type Service = {
   name: string;
   duration: string;
   price: string;
+  standardPrice: string;
   summary: string;
   deliverables: string[];
 };
@@ -55,7 +56,7 @@ export const projects: Project[] = [
     name: "AnimeExplore",
     eyebrow: "Web · Discovery platform",
     description:
-      "A searchable anime discovery experience with seasonal spotlights, character pages, watch orders, and practical guides for fans.",
+      "An automated content and discovery platform with search, seasonal data, character pages, watch orders, and practical guides.",
     image: "/projects/animeexplore.webp",
     liveUrl: "https://animeexplore.com/",
     repoUrl: "https://github.com/leviackerman05/animehq",
@@ -66,33 +67,37 @@ export const projects: Project[] = [
 
 export const services: Service[] = [
   {
-    name: "Launch site",
+    name: "Idea Validation",
     duration: "7 days",
-    price: "from $650",
+    price: "$249",
+    standardPrice: "$499",
     summary:
-      "A sharp, conversion-ready home for a new product, waitlist, or service that needs to look credible now.",
-    deliverables: ["Positioning and page structure", "Responsive build", "Analytics and launch handoff"],
+      "A focused validation sprint that sharpens the offer, launches a credible landing page, and starts collecting real demand.",
+    deliverables: ["Positioning and page structure", "Responsive one-page build", "Signup form and basic analytics"],
   },
   {
     name: "Business site",
-    duration: "7 to 10 days",
-    price: "from $900",
+    duration: "2 to 3 weeks",
+    price: "$1,799",
+    standardPrice: "$2,499",
     summary:
       "A modern website for an existing business that needs clearer messaging, better mobile UX, and an easier path to enquiry.",
-    deliverables: ["Content-led redesign", "Core service pages", "Performance and accessibility pass"],
+    deliverables: ["Content-led direction", "Up to 5 core pages", "Performance, accessibility, and analytics"],
   },
   {
     name: "Product rescue",
     duration: "2 weeks",
-    price: "from $1,400",
+    price: "$1,299",
+    standardPrice: "$1,799",
     summary:
       "A focused intervention for a prototype that looks unfinished, breaks under real use, or needs a production plan.",
     deliverables: ["Technical and UX audit", "Highest-impact fixes", "Deployment and reliability plan"],
   },
   {
     name: "MVP build",
-    duration: "3 to 4 weeks",
-    price: "from $2,400",
+    duration: "4 weeks",
+    price: "$2,499",
+    standardPrice: "$3,499",
     summary:
       "A lean first version with the core workflow, production foundations, and enough polish to put in front of real users.",
     deliverables: ["Scope and architecture", "Design and full-stack build", "Launch plus 2 weeks of support"],
@@ -103,7 +108,7 @@ export const faqs = [
   {
     question: "What can realistically ship in 7 days?",
     answer:
-      "A focused launch site, waitlist, service website, or a tightly scoped product improvement. Before work starts, you receive a written scope that separates what ships now from what belongs in a later phase.",
+      "A focused idea-validation launch with clear positioning, a responsive landing page, a signup form, and basic analytics. Before work starts, you receive a written scope that separates what ships now from what belongs in a later phase.",
   },
   {
     question: "Can you take over a prototype built with AI tools?",

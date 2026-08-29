@@ -7,6 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "capture": "node scripts/capture.mjs",
+    "check:responsive": "node scripts/check-responsive.mjs",
+    "deploy": "npm run build && wrangler pages deploy dist --project-name pdt-labs --branch main",
     "preview": "vite preview",
     "typecheck": "tsc -b --pretty false"
   },
@@ -27,7 +29,8 @@
     "playwright-core": "^1.62.1",
     "tailwindcss": "latest",
     "typescript": "latest",
-    "vite": "latest"
+    "vite": "latest",
+    "wrangler": "^4.127.1"
   },
   "packageManager": "npm@11.12.1"
 }

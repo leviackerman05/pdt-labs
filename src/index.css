@@ -128,24 +128,40 @@ img {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 7px;
   width: max-content;
   font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 760;
-  letter-spacing: -0.025em;
+  color: var(--ink);
 }
 
 .brand-mark {
-  display: grid;
-  width: 30px;
-  height: 30px;
-  place-items: center;
-  border-radius: 7px;
-  background: var(--accent);
-  color: var(--accent-ink);
-  font-size: 18px;
-  font-weight: 850;
+  display: inline-flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 820;
+  letter-spacing: -0.06em;
+  line-height: 1;
+}
+
+.brand-mark b {
+  font-weight: inherit;
+}
+
+.brand-mark i {
+  margin-left: 2px;
+  color: var(--accent);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 0.6;
+  transform: translateY(-1px);
+}
+
+.brand-name {
+  font-size: 16px;
+  font-weight: 620;
+  letter-spacing: -0.025em;
 }
 
 .desktop-nav {
@@ -314,6 +330,11 @@ footer a:hover,
   flex-direction: column;
   gap: 16px;
   align-items: flex-start;
+}
+
+.hero-actions .hero-mobile-booking,
+.hero-actions .hero-mobile-work {
+  display: none;
 }
 
 .text-link {
@@ -756,14 +777,33 @@ footer a:hover,
 .project-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
+  align-items: center;
 }
 
 .project-links a {
   display: inline-flex;
+  min-height: 40px;
   align-items: center;
   gap: 6px;
+  padding: 0 12px;
   font-weight: 700;
+}
+
+.project-live-link {
+  border: 1px solid var(--ink);
+  border-radius: 7px;
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.project-live-link:hover {
+  color: var(--accent-ink) !important;
+  transform: translateY(-1px);
+}
+
+.project-source-link {
+  color: var(--ink-soft);
 }
 
 .services {
@@ -968,44 +1008,197 @@ footer a:hover,
   letter-spacing: -0.035em;
 }
 
-.pricing-table {
-  border-top: 1px solid var(--ink);
-}
-
-.pricing-row {
+.pricing-grid {
   display: grid;
-  grid-template-columns: 1.3fr 0.6fr 0.6fr 44px;
-  min-height: 94px;
-  gap: 20px;
-  align-items: center;
-  border-bottom: 1px solid var(--ink);
-  transition: background 180ms ease, color 180ms ease;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--ink);
+  border-left: 1px solid var(--ink);
 }
 
-.pricing-row:hover {
+.pricing-card {
+  display: flex;
+  min-height: 620px;
+  flex-direction: column;
+  padding: clamp(24px, 3vw, 42px);
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  background: var(--canvas);
+}
+
+.pricing-card-featured {
+  background: var(--dark);
+  color: var(--dark-ink);
+}
+
+.pricing-card-top {
+  display: flex;
+  min-height: 76px;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+  border-bottom: 1px solid currentColor;
+}
+
+.pricing-card h3,
+.rescue-offer h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3vw, 48px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.pricing-card-top > span,
+.pricing-purpose,
+.price-line small,
+.price-line span,
+.rescue-offer > div > span,
+.rescue-price > span {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.pricing-purpose {
+  margin: 18px 0 36px;
+  color: var(--ink-soft);
+}
+
+.pricing-card-featured .pricing-purpose,
+.pricing-card-featured .pricing-summary {
+  color: color-mix(in srgb, var(--dark-ink) 68%, transparent);
+}
+
+.price-line {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  margin-bottom: 28px;
+}
+
+.price-line small {
+  grid-column: 1 / -1;
+  margin-bottom: 4px;
+  color: var(--ink-soft);
+}
+
+.pricing-card-featured .price-line small {
+  color: color-mix(in srgb, var(--dark-ink) 62%, transparent);
+}
+
+.price-values {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.price-values del,
+.rescue-price del {
+  color: var(--ink-soft);
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 30px);
+  font-weight: 650;
+  text-decoration-thickness: 2px;
+}
+
+.pricing-card-featured .price-values del {
+  color: color-mix(in srgb, var(--dark-ink) 58%, transparent);
+}
+
+.price-values strong {
+  font-family: var(--font-display);
+  font-size: clamp(54px, 5.5vw, 88px);
+  font-weight: 760;
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+  font-variant-numeric: tabular-nums;
+}
+
+.pricing-summary {
+  min-height: 92px;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 16px;
+}
+
+.pricing-card ul {
+  display: grid;
+  gap: 11px;
+  margin: 22px 0 32px;
+  padding: 22px 0 0;
+  border-top: 1px solid currentColor;
+  list-style: none;
+}
+
+.pricing-card li {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  font-size: 14px;
+}
+
+.pricing-card li svg {
+  flex: 0 0 auto;
+  margin-top: 3px;
+  color: var(--accent);
+}
+
+.pricing-card .button {
+  width: 100%;
+  margin-top: auto;
+}
+
+.button-on-dark {
+  border-color: var(--accent);
+}
+
+.rescue-offer {
+  display: grid;
+  grid-template-columns: 0.8fr 1.25fr 0.45fr auto;
+  gap: clamp(24px, 4vw, 64px);
+  align-items: center;
+  padding: clamp(26px, 4vw, 54px);
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  border-left: 1px solid var(--ink);
   background: var(--accent);
   color: var(--accent-ink);
 }
 
-.pricing-row strong {
-  font-family: var(--font-display);
-  font-size: clamp(27px, 3vw, 48px);
-  letter-spacing: -0.045em;
+.rescue-offer > p {
+  margin: 0;
+  font-size: 16px;
 }
 
-.pricing-row > span {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  text-transform: uppercase;
-}
-
-.pricing-row a {
+.rescue-price {
   display: grid;
-  width: 42px;
-  height: 42px;
-  place-items: center;
-  border: 1px solid currentColor;
-  border-radius: 50%;
+  gap: 6px;
+}
+
+.rescue-price del {
+  color: color-mix(in srgb, var(--accent-ink) 62%, transparent);
+}
+
+.rescue-price strong {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 54px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.rescue-offer > a {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 0 15px;
+  border: 1px solid var(--accent-ink);
+  border-radius: 8px;
+  font-weight: 750;
+  white-space: nowrap;
 }
 
 .pricing-disclaimer {
@@ -1275,6 +1468,22 @@ footer > div a {
   .contact {
     grid-template-columns: 1fr;
   }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-card {
+    min-height: 0;
+  }
+
+  .pricing-summary {
+    min-height: 0;
+  }
+
+  .rescue-offer {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 780px) {
@@ -1295,9 +1504,31 @@ footer > div a {
   }
 
   .hero-actions {
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    width: 100%;
+    grid-template-columns: max-content minmax(0, max-content);
+    gap: 10px;
     align-items: center;
+  }
+
+  .hero-actions .hero-mobile-booking,
+  .hero-actions .hero-mobile-work {
+    display: inline-flex;
+  }
+
+  .hero-desktop-work {
+    display: none;
+  }
+
+  .hero-actions .button {
+    min-height: 46px;
+    padding-inline: 15px;
+    white-space: nowrap;
+  }
+
+  .hero-actions .text-link {
+    min-height: 46px;
+    white-space: nowrap;
   }
 
   .route-board {
@@ -1428,19 +1659,24 @@ footer > div a {
     grid-column: 2;
   }
 
-  .pricing-row {
-    grid-template-columns: 1fr 45px;
-    gap: 8px;
-    padding: 18px 0;
+  .pricing-grid {
+    grid-template-columns: 1fr;
   }
 
-  .pricing-row > span {
-    grid-column: 1;
+  .pricing-card {
+    min-height: 0;
   }
 
-  .pricing-row a {
-    grid-column: 2;
-    grid-row: 1 / 4;
+  .pricing-summary {
+    min-height: 0;
+  }
+
+  .rescue-offer {
+    grid-template-columns: 1fr;
+  }
+
+  .rescue-offer > a {
+    width: 100%;
   }
 
   .contact-form {
@@ -1465,6 +1701,17 @@ footer > div a {
   footer > div {
     justify-content: flex-start;
     flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-actions .button,
+  .hero-actions .text-link {
+    font-size: 13px;
+  }
+
+  .hero-actions .button {
+    padding-inline: 12px;
   }
 }
 
