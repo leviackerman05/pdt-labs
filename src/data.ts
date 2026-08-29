@@ -78,8 +78,8 @@ export const services: Service[] = [
   {
     name: "Business site",
     duration: "2 to 3 weeks",
-    price: "$1,799",
-    standardPrice: "$2,499",
+    price: "$1,499",
+    standardPrice: "$1,999",
     summary:
       "A modern website for an existing business that needs clearer messaging, better mobile UX, and an easier path to enquiry.",
     deliverables: ["Content-led direction", "Up to 5 core pages", "Performance, accessibility, and analytics", "Advanced on-page and technical SEO"],
