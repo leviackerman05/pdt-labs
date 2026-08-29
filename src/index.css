@@ -939,6 +939,7 @@ footer a:hover,
 }
 
 .pricing-card {
+  position: relative;
   display: flex;
   min-height: 620px;
   flex-direction: column;
@@ -946,6 +947,24 @@ footer a:hover,
   border-right: 1px solid var(--ink);
   border-bottom: 1px solid var(--ink);
   background: var(--canvas);
+}
+
+.pricing-popular {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 2;
+  padding: 6px 11px;
+  border: 1px solid var(--ink);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  line-height: 1;
+  text-transform: uppercase;
+  transform: translate(-50%, -50%);
 }
 
 .pricing-card-featured {

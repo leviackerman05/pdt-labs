@@ -18,6 +18,7 @@ for (const width of widths) {
     );
     const actionRects = visibleActions.map((action) => action.getBoundingClientRect());
     const pricingRects = [...document.querySelectorAll(".pricing-card")].map((card) => card.getBoundingClientRect());
+    const bookingLinks = [...document.querySelectorAll("a")].filter((link) => link.textContent?.includes("Book a call") || link.textContent?.includes("Book a rescue call"));
     return {
       viewport: window.innerWidth,
       documentWidth: document.documentElement.scrollWidth,
@@ -26,6 +27,11 @@ for (const width of widths) {
       pricingCardsShareRow: pricingRects.length === 3
         ? Math.max(...pricingRects.map((rect) => rect.top)) - Math.min(...pricingRects.map((rect) => rect.top)) < 3
         : false,
+      bookingLinksAreCorrect: bookingLinks.length === 6 && bookingLinks.every((link) => (
+        link.getAttribute("href") === "https://cal.com/pdtlabs/quick-chat"
+        && link.getAttribute("target") === "_blank"
+        && link.getAttribute("rel")?.includes("noreferrer")
+      )),
     };
   });
   const teaserText = page.locator(".work-more p");
@@ -51,7 +57,8 @@ const failures = results.filter((result) => {
   return result.documentWidth > result.viewport
     || (result.viewport <= 780 ? !mobileActionsAreCorrect : !desktopActionIsCorrect)
     || !pricingLayoutIsCorrect
-    || !result.teaserDoesNotReflow;
+    || !result.teaserDoesNotReflow
+    || !result.bookingLinksAreCorrect;
 });
 console.log(JSON.stringify(results, null, 2));
 

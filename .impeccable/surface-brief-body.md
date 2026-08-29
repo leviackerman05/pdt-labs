@@ -53,6 +53,7 @@ PDT Labs is a senior product studio that turns rough ideas and fragile prototype
 - Contrast targets WCAG AA.
 - Product images have descriptive alt text, fixed aspect ratios, lazy loading below the fold.
 - Keyboard users can reach every external link and form field.
+- Every Book a call CTA opens the verified Cal.com quick-chat page in a new tab. The contact form remains a clearly labeled email alternative.
 
 ## Content rules
 

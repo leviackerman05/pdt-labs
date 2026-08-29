@@ -16,7 +16,7 @@ import { faqs, projects, services, type Project } from "./data";
 
 const easing = [0.22, 1, 0.36, 1] as const;
 const contactEmail = "hello@pdtlabs.dev";
-const bookingTarget = "#contact";
+const bookingTarget = "https://cal.com/pdtlabs/quick-chat";
 
 function Brand({ onClick }: { onClick?: () => void }) {
   return (
@@ -47,7 +47,7 @@ function Header({ dark, onTheme }: { dark: boolean; onTheme: () => void }) {
         <button className="icon-button" type="button" onClick={onTheme} aria-label={`Use ${dark ? "light" : "dark"} theme`}>
           {dark ? <Sun size={18} weight="bold" /> : <Moon size={18} weight="bold" />}
         </button>
-        <a className="button button-small desktop-cta" href={bookingTarget}>
+        <a className="button button-small desktop-cta" href={bookingTarget} target="_blank" rel="noreferrer">
           Book a call <ArrowUpRight size={16} weight="bold" />
         </a>
         <button
@@ -78,12 +78,14 @@ function Header({ dark, onTheme }: { dark: boolean; onTheme: () => void }) {
               ["Process", "#process"],
               ["Pricing", "#pricing"],
               ["FAQ", "#faq"],
-              ["Book a call", bookingTarget],
             ].map(([label, href]) => (
               <a key={href} href={href} onClick={closeMenu}>
                 {label} <ArrowRight size={18} />
               </a>
             ))}
+            <a href={bookingTarget} target="_blank" rel="noreferrer" onClick={closeMenu}>
+              Book a call <ArrowUpRight size={18} />
+            </a>
           </motion.nav>
         )}
       </AnimatePresence>
@@ -287,7 +289,7 @@ function App() {
                   PDT Labs helps founders and growing businesses turn unclear briefs, fragile prototypes, and outdated websites into useful software people can trust.
                 </p>
                 <div className="hero-actions">
-                  <a className="button hero-mobile-booking" href={bookingTarget}>Book a call <ArrowUpRight size={18} weight="bold" /></a>
+                  <a className="button hero-mobile-booking" href={bookingTarget} target="_blank" rel="noreferrer">Book a call <ArrowUpRight size={18} weight="bold" /></a>
                   <a className="button hero-desktop-work" href="#work">See shipped work <ArrowDown size={17} weight="bold" /></a>
                   <a className="text-link hero-mobile-work" href="#work">See shipped work <ArrowDown size={17} weight="bold" /></a>
                 </div>
@@ -358,6 +360,7 @@ function App() {
           <div className="pricing-grid">
             {services.filter((service) => service.name !== "Product rescue").map((service, index) => (
               <article className={`pricing-card ${index === 2 ? "pricing-card-featured" : ""}`} key={service.name}>
+                {index === 1 && <span className="pricing-popular">Popular</span>}
                 <div className="pricing-card-top">
                   <h3>{service.name}</h3>
                   <span>{service.duration}</span>
@@ -372,7 +375,7 @@ function App() {
                 <ul>
                   {service.deliverables.map((item) => <li key={item}><Check size={16} weight="bold" /> {item}</li>)}
                 </ul>
-                <a className={`button ${index === 2 ? "button-on-dark" : ""}`} href={bookingTarget}>Book a call <ArrowUpRight size={17} weight="bold" /></a>
+                <a className={`button ${index === 2 ? "button-on-dark" : ""}`} href={bookingTarget} target="_blank" rel="noreferrer">Book a call <ArrowUpRight size={17} weight="bold" /></a>
               </article>
             ))}
           </div>
@@ -384,7 +387,7 @@ function App() {
                 <span><Check size={16} weight="bold" /> {service.deliverables.at(-1)}</span>
               </div>
               <div className="rescue-price"><span>{service.duration} · Founding price</span><del>{service.standardPrice}</del><strong>{service.price}</strong></div>
-              <a href={bookingTarget}>Book a rescue call <ArrowRight size={19} weight="bold" /></a>
+              <a href={bookingTarget} target="_blank" rel="noreferrer">Book a rescue call <ArrowUpRight size={19} weight="bold" /></a>
             </article>
           ))}
           <p className="pricing-disclaimer">Founding prices apply to the first three projects. The crossed-out figure is the planned standard price after those places are filled. Your fixed quote follows a short call and written brief.</p>
@@ -423,9 +426,9 @@ function App() {
 
         <section id="contact" className="contact section-pad" aria-labelledby="contact-title">
           <div className="contact-copy">
-            <p className="eyebrow">Founding client offer available</p>
-            <h2 id="contact-title">Book a call.</h2>
-            <p>Tell me what you are building. I will reply with a few useful questions and a time for us to speak.</p>
+            <p className="eyebrow">Another way to start</p>
+            <h2 id="contact-title">Prefer email?</h2>
+            <p>If you would rather write first, share what you are building and I will reply with useful questions before we speak.</p>
             <a href={`mailto:${contactEmail}`}>{contactEmail} <ArrowUpRight size={17} weight="bold" /></a>
           </div>
           <ContactForm />
