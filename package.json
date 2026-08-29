@@ -1,0 +1,33 @@
+{
+  "name": "pdt-labs",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "capture": "node scripts/capture.mjs",
+    "preview": "vite preview",
+    "typecheck": "tsc -b --pretty false"
+  },
+  "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "latest",
+    "@fontsource-variable/figtree": "latest",
+    "@fontsource/jetbrains-mono": "latest",
+    "@phosphor-icons/react": "latest",
+    "motion": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@vitejs/plugin-react-swc": "latest",
+    "playwright-core": "^1.62.1",
+    "tailwindcss": "latest",
+    "typescript": "latest",
+    "vite": "latest"
+  },
+  "packageManager": "npm@11.12.1"
+}
