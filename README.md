@@ -54,7 +54,7 @@ The enquiry form composes an email to `hello@pdtlabs.dev`. Cloudflare Email Rout
 
 ## Deployment status
 
-The project is configured for Cloudflare Pages using `wrangler.jsonc`.
+The project is deployed on Cloudflare Pages at `https://pdtlabs.dev` with `https://www.pdtlabs.dev` also attached. The apex domain is the canonical URL in the page metadata.
 
 - Build command: `npm run build`
 - Build output directory: `dist`
