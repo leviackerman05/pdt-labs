@@ -18,6 +18,9 @@ const easing = [0.22, 1, 0.36, 1] as const;
 const contactEmail = "hello@pdtlabs.dev";
 const bookingTarget = "https://cal.com/pdtlabs/quick-chat";
 
+type ContactField = "name" | "email" | "project";
+type ContactErrors = Partial<Record<ContactField, string>>;
+
 function Brand({ onClick }: { onClick?: () => void }) {
   return (
     <a className="brand" href="#top" aria-label="PDT Labs home" onClick={onClick}>
@@ -208,30 +211,92 @@ function ProjectCase({ project, index }: { project: Project; index: number }) {
 }
 
 function ContactForm() {
+  const [errors, setErrors] = useState<ContactErrors>({});
+
+  const clearError = (field: ContactField) => {
+    setErrors((current) => {
+      if (!current[field]) return current;
+      const next = { ...current };
+      delete next[field];
+      return next;
+    });
+  };
+
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const name = String(data.get("name") ?? "");
-    const email = String(data.get("email") ?? "");
-    const project = String(data.get("project") ?? "");
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const name = String(data.get("name") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const project = String(data.get("project") ?? "").trim();
+    const emailInput = form.elements.namedItem("email") as HTMLInputElement;
+    const nextErrors: ContactErrors = {};
+
+    if (!name) nextErrors.name = "Enter your name.";
+    if (!email) {
+      nextErrors.email = "Enter your email address.";
+    } else if (emailInput.validity.typeMismatch) {
+      nextErrors.email = "Enter a valid email address.";
+    }
+    if (!project) nextErrors.project = "Tell me briefly what you would like to discuss.";
+
+    if (Object.keys(nextErrors).length > 0) {
+      setErrors(nextErrors);
+      const firstInvalidField = (["name", "email", "project"] as ContactField[])
+        .find((field) => nextErrors[field]);
+      if (firstInvalidField) {
+        (form.elements.namedItem(firstInvalidField) as HTMLInputElement | HTMLTextAreaElement)?.focus();
+      }
+      return;
+    }
+
+    setErrors({});
     const subject = encodeURIComponent(`PDT Labs call request from ${name}`);
     const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nWhat I want to discuss:\n${project}`);
     window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
   };
 
   return (
-    <form className="contact-form" onSubmit={submit}>
-      <label>
+    <form className="contact-form" onSubmit={submit} noValidate>
+      <label className={errors.name ? "field-invalid" : undefined}>
         <span>Your name</span>
-        <input name="name" autoComplete="name" required placeholder="Ada Lovelace" />
+        <input
+          name="name"
+          autoComplete="name"
+          required
+          placeholder="Ada Lovelace"
+          aria-invalid={Boolean(errors.name)}
+          aria-describedby={errors.name ? "name-error" : undefined}
+          onChange={() => clearError("name")}
+        />
+        {errors.name && <p className="form-error" id="name-error" role="alert">{errors.name}</p>}
       </label>
-      <label>
+      <label className={errors.email ? "field-invalid" : undefined}>
         <span>Email</span>
-        <input name="email" type="email" autoComplete="email" required placeholder="ada@company.com" />
+        <input
+          name="email"
+          type="email"
+          autoComplete="email"
+          required
+          placeholder="ada@company.com"
+          aria-invalid={Boolean(errors.email)}
+          aria-describedby={errors.email ? "email-error" : undefined}
+          onChange={() => clearError("email")}
+        />
+        {errors.email && <p className="form-error" id="email-error" role="alert">{errors.email}</p>}
       </label>
-      <label className="full-field">
+      <label className={`full-field${errors.project ? " field-invalid" : ""}`}>
         <span>What would you like to discuss?</span>
-        <textarea name="project" required rows={4} placeholder="A short description, what exists today, and your preferred time window." />
+        <textarea
+          name="project"
+          required
+          rows={4}
+          placeholder="A short description, what exists today, and your preferred time window."
+          aria-invalid={Boolean(errors.project)}
+          aria-describedby={errors.project ? "project-error" : undefined}
+          onChange={() => clearError("project")}
+        />
+        {errors.project && <p className="form-error" id="project-error" role="alert">{errors.project}</p>}
       </label>
       <button className="button button-dark full-field" type="submit">
         Request a call by email <ArrowUpRight size={18} weight="bold" />

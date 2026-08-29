@@ -44,6 +44,24 @@ for (const width of widths) {
     && Math.abs(teaserBeforeHover.width - teaserAfterHover.width) < 1
     && Math.abs(teaserBeforeHover.height - teaserAfterHover.height) < 1,
   );
+
+  const contactForm = page.locator(".contact-form");
+  await contactForm.locator('button[type="submit"]').click();
+  result.contactValidation = await contactForm.evaluate((form) => ({
+    disablesNativePopups: form.noValidate,
+    errorCount: form.querySelectorAll(".form-error").length,
+    invalidFieldCount: form.querySelectorAll('[aria-invalid="true"]').length,
+    firstInvalidFieldIsFocused: document.activeElement?.getAttribute("name") === "name",
+  }));
+  await contactForm.locator('input[name="name"]').fill("Ada Lovelace");
+  await contactForm.locator('input[name="email"]').fill("not-an-email");
+  await contactForm.locator('textarea[name="project"]').fill("I need help shipping a product.");
+  await contactForm.locator('button[type="submit"]').click();
+  result.contactEmailValidation = await contactForm.evaluate((form) => ({
+    errorCount: form.querySelectorAll(".form-error").length,
+    message: form.querySelector(".form-error")?.textContent,
+    invalidFieldIsFocused: document.activeElement?.getAttribute("name") === "email",
+  }));
   results.push(result);
   await context.close();
 }
@@ -58,7 +76,14 @@ const failures = results.filter((result) => {
     || (result.viewport <= 780 ? !mobileActionsAreCorrect : !desktopActionIsCorrect)
     || !pricingLayoutIsCorrect
     || !result.teaserDoesNotReflow
-    || !result.bookingLinksAreCorrect;
+    || !result.bookingLinksAreCorrect
+    || !result.contactValidation.disablesNativePopups
+    || result.contactValidation.errorCount !== 3
+    || result.contactValidation.invalidFieldCount !== 3
+    || !result.contactValidation.firstInvalidFieldIsFocused
+    || result.contactEmailValidation.errorCount !== 1
+    || result.contactEmailValidation.message !== "Enter a valid email address."
+    || !result.contactEmailValidation.invalidFieldIsFocused;
 });
 console.log(JSON.stringify(results, null, 2));
 

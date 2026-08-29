@@ -32,6 +32,7 @@
   --line: #bfc5c1;
   --accent: #ff5a2a;
   --accent-ink: #15120f;
+  --error: #a1281f;
   --dark: #111411;
   --dark-ink: #f5f6f3;
   --shadow: rgba(16, 18, 16, 0.14);
@@ -47,6 +48,7 @@
   --line: #3f453f;
   --accent: #ff6436;
   --accent-ink: #18110d;
+  --error: #ff9d87;
   --dark: #eef1ec;
   --dark-ink: #121412;
   --shadow: rgba(0, 0, 0, 0.34);
@@ -1303,6 +1305,23 @@ footer a:hover,
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
   color: var(--ink-soft);
+}
+
+.contact-form .field-invalid > span,
+.form-error {
+  color: var(--error);
+}
+
+.contact-form .field-invalid input,
+.contact-form .field-invalid textarea {
+  border-bottom-color: var(--error);
+}
+
+.form-error {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.35;
 }
 
 .full-field {
