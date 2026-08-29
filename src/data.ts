@@ -73,7 +73,7 @@ export const services: Service[] = [
     standardPrice: "$499",
     summary:
       "A focused validation sprint that sharpens the offer, launches a credible landing page, and starts collecting real demand.",
-    deliverables: ["Positioning and page structure", "Responsive one-page build", "Signup form and basic analytics"],
+    deliverables: ["Positioning and page structure", "Responsive one-page build", "Signup form and basic analytics", "Basic technical SEO setup"],
   },
   {
     name: "Business site",
@@ -82,7 +82,7 @@ export const services: Service[] = [
     standardPrice: "$2,499",
     summary:
       "A modern website for an existing business that needs clearer messaging, better mobile UX, and an easier path to enquiry.",
-    deliverables: ["Content-led direction", "Up to 5 core pages", "Performance, accessibility, and analytics"],
+    deliverables: ["Content-led direction", "Up to 5 core pages", "Performance, accessibility, and analytics", "Advanced on-page and technical SEO"],
   },
   {
     name: "Product rescue",
@@ -91,7 +91,7 @@ export const services: Service[] = [
     standardPrice: "$1,799",
     summary:
       "A focused intervention for a prototype that looks unfinished, breaks under real use, or needs a production plan.",
-    deliverables: ["Technical and UX audit", "Highest-impact fixes", "Deployment and reliability plan"],
+    deliverables: ["Technical and UX audit", "Highest-impact fixes", "Deployment and reliability plan", "Technical SEO audit and repair plan"],
   },
   {
     name: "MVP build",
@@ -100,7 +100,7 @@ export const services: Service[] = [
     standardPrice: "$3,499",
     summary:
       "A lean first version with the core workflow, production foundations, and enough polish to put in front of real users.",
-    deliverables: ["Scope and architecture", "Design and full-stack build", "Launch plus 2 weeks of support"],
+    deliverables: ["Scope and architecture", "Design and full-stack build", "Launch plus 2 weeks of support", "SEO-ready architecture and metadata"],
   },
 ];
 

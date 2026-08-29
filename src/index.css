@@ -308,11 +308,7 @@ footer a:hover,
 }
 
 .hero-support {
-  display: grid;
-  grid-template-columns: minmax(260px, 0.85fr) minmax(230px, 0.6fr);
-  gap: 34px;
-  align-items: end;
-  max-width: 780px;
+  max-width: 600px;
   border-top: 1px solid var(--line);
   padding-top: 20px;
 }
@@ -327,9 +323,9 @@ footer a:hover,
 
 .hero-actions {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   align-items: flex-start;
+  margin-top: 24px;
 }
 
 .hero-actions .hero-mobile-booking,
@@ -778,6 +774,36 @@ footer a:hover,
   align-items: center;
 }
 
+.work-more {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.55fr) minmax(300px, 1fr);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: center;
+  margin-top: clamp(72px, 10vw, 150px);
+  padding: clamp(24px, 3vw, 40px) 0;
+  border-top: 1px solid var(--accent);
+  border-bottom: 1px solid var(--accent);
+  transition: background-color 220ms ease;
+}
+
+.work-more strong {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 62px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.work-more p {
+  max-width: 620px;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: clamp(16px, 1.4vw, 20px);
+}
+
+.work-more:hover {
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
 .project-links a {
   display: inline-flex;
   min-height: 40px;
@@ -1055,7 +1081,9 @@ footer a:hover,
   grid-template-columns: 0.8fr 1.25fr 0.45fr auto;
   gap: clamp(24px, 4vw, 64px);
   align-items: center;
+  margin-top: clamp(12px, 1.4vw, 20px);
   padding: clamp(26px, 4vw, 54px);
+  border-top: 1px solid var(--ink);
   border-right: 1px solid var(--ink);
   border-bottom: 1px solid var(--ink);
   border-left: 1px solid var(--ink);
@@ -1063,9 +1091,22 @@ footer a:hover,
   color: var(--accent-ink);
 }
 
-.rescue-offer > p {
+.rescue-copy p {
   margin: 0;
   font-size: 16px;
+}
+
+.rescue-copy span {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.rescue-copy svg {
+  flex: 0 0 auto;
 }
 
 .rescue-price {
@@ -1408,6 +1449,7 @@ footer > div a {
     grid-template-columns: max-content minmax(0, max-content);
     gap: 10px;
     align-items: center;
+    margin-top: 22px;
   }
 
   .hero-actions .hero-mobile-booking,
@@ -1527,6 +1569,15 @@ footer > div a {
 
   .project-image {
     box-shadow: 9px 9px 0 var(--panel-strong);
+  }
+
+  .work-more {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .work-more p {
+    grid-column: 1;
   }
 
   .process-steps li {

@@ -267,7 +267,7 @@ function App() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                Founder-led product studio · Bengaluru to anywhere
+                Founder-led product studio · Built to ship
               </motion.p>
               <motion.h1
                 id="hero-title"
@@ -301,7 +301,7 @@ function App() {
           <div><span>06</span><p>years shipping production systems</p></div>
           <div><span>E2E</span><p>product, architecture, infrastructure, and launch</p></div>
           <div><span>01</span><p>senior builder from scope to release</p></div>
-          <p className="proof-note">Bengaluru based, working globally.</p>
+          <p className="proof-note">Remote collaboration, clear ownership.</p>
         </section>
 
         <section id="work" className="work section-pad section-rule" aria-labelledby="work-title">
@@ -312,6 +312,10 @@ function App() {
           </div>
           <div className="project-list">
             {projects.map((project, index) => <ProjectCase key={project.name} project={project} index={index} />)}
+          </div>
+          <div className="work-more" role="note" aria-label="Additional work is available to discuss">
+            <strong>And many more.</strong>
+            <p>This is a selected portfolio. Additional production work can be discussed during a project call.</p>
           </div>
         </section>
 
@@ -375,7 +379,10 @@ function App() {
           {services.filter((service) => service.name === "Product rescue").map((service) => (
             <article className="rescue-offer" key={service.name}>
               <div><span>Already have a prototype?</span><h3>{service.name}</h3></div>
-              <p>{service.summary}</p>
+              <div className="rescue-copy">
+                <p>{service.summary}</p>
+                <span><Check size={16} weight="bold" /> {service.deliverables.at(-1)}</span>
+              </div>
               <div className="rescue-price"><span>{service.duration} · Founding price</span><del>{service.standardPrice}</del><strong>{service.price}</strong></div>
               <a href={bookingTarget}>Book a rescue call <ArrowRight size={19} weight="bold" /></a>
             </article>

@@ -28,6 +28,16 @@ for (const width of widths) {
         : false,
     };
   });
+  const teaserText = page.locator(".work-more p");
+  const teaserBeforeHover = await teaserText.boundingBox();
+  await page.locator(".work-more").hover();
+  const teaserAfterHover = await teaserText.boundingBox();
+  result.teaserDoesNotReflow = Boolean(
+    teaserBeforeHover
+    && teaserAfterHover
+    && Math.abs(teaserBeforeHover.width - teaserAfterHover.width) < 1
+    && Math.abs(teaserBeforeHover.height - teaserAfterHover.height) < 1,
+  );
   results.push(result);
   await context.close();
 }
@@ -40,7 +50,8 @@ const failures = results.filter((result) => {
   const pricingLayoutIsCorrect = result.viewport <= 780 ? !result.pricingCardsShareRow : result.pricingCardsShareRow;
   return result.documentWidth > result.viewport
     || (result.viewport <= 780 ? !mobileActionsAreCorrect : !desktopActionIsCorrect)
-    || !pricingLayoutIsCorrect;
+    || !pricingLayoutIsCorrect
+    || !result.teaserDoesNotReflow;
 });
 console.log(JSON.stringify(results, null, 2));
 

@@ -34,6 +34,7 @@ Prospects will usually arrive from YouTube, LinkedIn, GitHub, direct outreach, o
 - Cover product strategy, landing pages, MVPs, web applications, Android products, AI integrations, backend systems, infrastructure, production readiness, analytics, and launch support.
 - Use real project imagery and concise case-study summaries.
 - Do not use Priyansh's photograph.
+- Do not publish Priyansh's city, home location, or other unnecessary personal-location details.
 - Keep the existing job-application portfolio separate.
 - Keep the initial repository public.
 - Do not deploy the website during the initial build.
